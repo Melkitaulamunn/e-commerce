@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useApi from "./hooks/useApi";
 import { setCategories } from "./redux/actions/category-actions";
 import CategoryDetails from "./pages/category-details";
-
+import ProductDetails from "./pages/produxt-details";
 
 function App() {
   const { categoryState } = useSelector((state) => state);
@@ -28,6 +28,7 @@ function App() {
       <Routes>
         <Route index element={<Index />} />
         <Route path="category/:category_code" element={<CategoryDetails />} />
+        <Route path="product/:product_code" element={<ProductDetails />} />
       </Routes>
     </BrowserRouter>
   );
