@@ -602,7 +602,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 .product-single h2 { margin-bottom: 0px; }
 .product-quantity { }
 .quantity { }
-.quantity .qty { width: 67px; text-align: center; height: 45px; }
+.quantity .qty { width: 100%; text-align: center; height: 45px; }
 .qty { padding: 5px; }
 .input-text { padding: .6180469716em; border: 1px solid #c8cbcf; background-color: #fff; color: #43454b; outline: 0; -webkit-appearance: none; box-sizing: border-box; font-weight: 400; }
 .product-social { float: none; margin-bottom: 20px; }
