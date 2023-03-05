@@ -7,6 +7,7 @@ import useApi from "./hooks/useApi";
 import { setCategories } from "./redux/actions/category-actions";
 import CategoryDetails from "./pages/category-details";
 
+
 function App() {
   const { categoryState } = useSelector((state) => state);
   const api = useApi();

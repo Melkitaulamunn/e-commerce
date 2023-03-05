@@ -14,8 +14,7 @@ const  categorysReducer=(state=initialState,action)=>{
             }
                
             
-            
-    
+
     
         default:
             return state

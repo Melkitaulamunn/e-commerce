@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "../../components/breadcrumb";
+import useApi from "../../hooks/useApi";
+import ProductBox from "./comapanents/product-box";
 
 export default function CategoryDetails() {
   const params = useParams();
-  console.log(params);
+  const api = useApi();
+  const [products, setProducts] = useState([]);
+
+  function getProducts() {
+    const config = {
+      order: "asc",
+      "productTaxons.taxon.code": params.category_code,
+    };
+    api
+      .get("shop/products", { params: config })
+      .then((res) => setProducts(res.data));
+  }
+  useEffect(() => {}, [params.category_code]);
+
   return (
     <>
       <Breadcrumb />
@@ -46,37 +62,13 @@ export default function CategoryDetails() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
-                  <div class="product-block">
-                    <div class="product-img">
-                      <img src="images/product_img_1.png" alt="" />
+                {products.map(() => {
+                  return (
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
+                      <ProductBox />
                     </div>
-                    <div class="product-content">
-                      <h5>
-                        <a href="#" class="product-title">
-                          Google Pixel <strong>(128GB, Black)</strong>
-                        </a>
-                      </h5>
-                      <div class="product-meta">
-                        <a href="#" class="product-price">
-                          $1100
-                        </a>
-                        <a href="#" class="discounted-price">
-                          $1400
-                        </a>
-                        <span class="offer-price">20%off</span>
-                      </div>
-                      <div class="shopping-btn">
-                        <a href="#" class="product-btn btn-like">
-                          <i class="fa fa-heart"></i>
-                        </a>
-                        <a href="#" class="product-btn btn-cart">
-                          <i class="fa fa-shopping-cart"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
 
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
                   <div class="product-block">
