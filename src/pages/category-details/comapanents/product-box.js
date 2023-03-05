@@ -1,18 +1,22 @@
-import React from 'react';
-import {Link} from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
+const ProductBox = (props) => {
+  console.log("product box props", props);
 
-const ProductBox = () => {
   return (
-    <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
     <div className="product-block">
       <div className="product-img">
-        <img src="images/product_img_4.png" alt="" />
+        <img
+          src={`https://ecommerce-api.udemig.dev/${props.product.images[0].path}`}
+          alt=""
+          style={{ aspectRatio: "0.7" }}
+        />
       </div>
       <div className="product-content">
         <h5>
           <Link to="#" className="product-title">
-            Vivo V5 Plus <strong>(Matte Black)</strong>
+            <strong>{props.product.name}</strong>
           </Link>
         </h5>
         <div className="product-meta">
@@ -34,8 +38,7 @@ const ProductBox = () => {
         </div>
       </div>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default ProductBox
+export default ProductBox;
